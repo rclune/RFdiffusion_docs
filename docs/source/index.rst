@@ -17,6 +17,6 @@ RF\ *diffusion*\
 Contents
 ________
 
-.. toctree:
+.. toctree::
 
    README
