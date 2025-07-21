@@ -12,10 +12,11 @@ RF\ *diffusion*\
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
-	     
+
+      
 Contents
 ________
 
-.. toctree::
+.. toctree:
 
    README
