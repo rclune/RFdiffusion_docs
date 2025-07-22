@@ -1,0 +1,887 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="./">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="prev" title="RFdiffusion" href="index.html" />
+
+    <!-- Generated with Sphinx 8.2.3 and Furo 2025.07.19 -->
+        <title>README file - RFdiffusion *Documentation* v1.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=acfd86a5" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=25af2a20" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=8dab3a3b" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f2f2f2;
+  --color-code-foreground: #1e1e1e;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #2b2b2b;
+  --color-code-foreground: #f8f8f2;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #2b2b2b;
+  --color-code-foreground: #f8f8f2;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="index.html"><div class="brand">RFdiffusion *Documentation* v1.1.0 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
+  
+  <span class="sidebar-brand-text">RFdiffusion *Documentation* v1.1.0 documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">README file</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="_sources/readme_link.rst.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="readme-file">
+<h1>README file<a class="headerlink" href="#readme-file" title="Link to this heading">¶</a></h1>
+<section id="rfdiffusion">
+<h2>RF<em>diffusion</em><a class="headerlink" href="#rfdiffusion" title="Link to this heading">¶</a></h2>
+<!--
+<img width="1115" alt="Screen Shot 2023-01-19 at 5 56 33 PM" src="https://user-images.githubusercontent.com/56419265/213588200-f8f44dba-276e-4dd2-b844-15acc441458d.png">
+-->
+<p align="center">
+  <img src="./img/diffusion_protein_gradient_2.jpg" alt="alt text" width="1100px" align="middle"/>
+</p>
+<p><em>Image: Ian C. Haydon / UW Institute for Protein Design</em></p>
+<section id="description">
+<h3>Description<a class="headerlink" href="#description" title="Link to this heading">¶</a></h3>
+<p>RFdiffusion is an open source method for structure generation, with or without conditional information (a motif, target etc). It can perform a whole range of protein design challenges as we have outlined in <a class="reference external" href="https://www.biorxiv.org/content/10.1101/2022.12.09.519842v1">the RFdiffusion paper</a>.</p>
+<p><strong>Things Diffusion can do</strong></p>
+<ul class="simple">
+<li><p>Motif Scaffolding</p></li>
+<li><p>Unconditional protein generation</p></li>
+<li><p>Symmetric unconditional generation (cyclic, dihedral and tetrahedral symmetries currently implemented, more coming!)</p></li>
+<li><p>Symmetric motif scaffolding</p></li>
+<li><p>Binder design</p></li>
+<li><p>Design diversification (“partial diffusion”, sampling around a design)</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="table-of-contents">
+<h2>Table of contents<a class="headerlink" href="#table-of-contents" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="#rfdiffusion"><span class="xref myst">RF<em>diffusion</em></span></a></p>
+<ul>
+<li><p><a class="reference internal" href="#description"><span class="xref myst">Description</span></a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#table-of-contents"><span class="xref myst">Table of contents</span></a></p></li>
+<li><p><a class="reference internal" href="#getting-started--installation"><span class="xref myst">Getting started / installation</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="#conda-install-se3-transformer"><span class="xref myst">Conda Install SE3-Transformer</span></a></p></li>
+<li><p><a class="reference internal" href="#get-ppi-scaffold-examples"><span class="xref myst">Get PPI Scaffold Examples</span></a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#usage"><span class="xref myst">Usage</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="#running-the-diffusion-script"><span class="xref myst">Running the diffusion script</span></a></p></li>
+<li><p><a class="reference internal" href="#basic-execution---an-unconditional-monomer"><span class="xref myst">Basic execution - an unconditional monomer</span></a></p></li>
+<li><p><a class="reference internal" href="#motif-scaffolding"><span class="xref myst">Motif Scaffolding</span></a></p></li>
+<li><p><a class="reference internal" href="#the-active-site-model-holds-very-small-motifs-in-place"><span class="xref myst">The “active site” model holds very small motifs in place</span></a></p></li>
+<li><p><a class="reference internal" href="#the-inpaint_seq-flag"><span class="xref myst">The <code class="docutils literal notranslate"><span class="pre">inpaint_seq</span></code> flag</span></a></p></li>
+<li><p><a class="reference internal" href="#a-note-on-diffusert"><span class="xref myst">A note on <code class="docutils literal notranslate"><span class="pre">diffuser.T</span></code></span></a></p></li>
+<li><p><a class="reference internal" href="#partial-diffusion"><span class="xref myst">Partial diffusion</span></a></p></li>
+<li><p><a class="reference internal" href="#binder-design"><span class="xref myst">Binder Design</span></a></p></li>
+<li><p><a class="reference internal" href="#practical-considerations-for-binder-design"><span class="xref myst">Practical Considerations for Binder Design</span></a></p></li>
+<li><p><a class="reference internal" href="#fold-conditioning"><span class="xref myst">Fold Conditioning</span></a></p></li>
+<li><p><a class="reference internal" href="#generation-of-symmetric-oligomers"><span class="xref myst">Generation of Symmetric Oligomers</span></a></p></li>
+<li><p><a class="reference internal" href="#using-auxiliary-potentials"><span class="xref myst">Using Auxiliary Potentials</span></a></p></li>
+<li><p><a class="reference internal" href="#symmetric-motif-scaffolding"><span class="xref myst">Symmetric Motif Scaffolding.</span></a></p></li>
+<li><p><a class="reference internal" href="#macrocyclic-peptide-design-with-rfpeptides"><span class="xref myst">RFpeptides macrocycle design</span></a></p></li>
+<li><p><a class="reference internal" href="#a-note-on-model-weights"><span class="xref myst">A Note on Model Weights</span></a></p></li>
+<li><p><a class="reference internal" href="#things-you-might-want-to-play-with-at-inference-time"><span class="xref myst">Things you might want to play with at inference time</span></a></p></li>
+<li><p><a class="reference internal" href="#understanding-the-output-files"><span class="xref myst">Understanding the output files</span></a></p></li>
+<li><p><a class="reference internal" href="#docker"><span class="xref myst">Docker</span></a></p></li>
+<li><p><a class="reference internal" href="#conclusion"><span class="xref myst">Conclusion</span></a></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="getting-started-installation">
+<h2>Getting started / installation<a class="headerlink" href="#getting-started-installation" title="Link to this heading">¶</a></h2>
+<p>Thanks to Sergey Ovchinnikov, RFdiffusion is available as a <a class="reference external" href="https://colab.research.google.com/github/sokrypton/ColabDesign/blob/v1.1.1/rf/examples/diffusion.ipynb">Google Colab Notebook</a> if you would like to run it there!</p>
+<p>We strongly recommend reading this README carefully before getting started with RFdiffusion, and working through some of the examples in the Colab Notebook.</p>
+<p>If you want to set up RFdiffusion locally, follow the steps below:</p>
+<p>To get started using RFdiffusion, clone the repo:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">RosettaCommons</span><span class="o">/</span><span class="n">RFdiffusion</span><span class="o">.</span><span class="n">git</span>
+</pre></div>
+</div>
+<p>You’ll then need to download the model weights into the RFDiffusion directory.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">RFdiffusion</span>
+<span class="n">mkdir</span> <span class="n">models</span> <span class="o">&amp;&amp;</span> <span class="n">cd</span> <span class="n">models</span>
+<span class="n">wget</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">files</span><span class="o">.</span><span class="n">ipd</span><span class="o">.</span><span class="n">uw</span><span class="o">.</span><span class="n">edu</span><span class="o">/</span><span class="n">pub</span><span class="o">/</span><span class="n">RFdiffusion</span><span class="o">/</span><span class="mi">6</span><span class="n">f5902ac237024bdd0c176cb93063dc4</span><span class="o">/</span><span class="n">Base_ckpt</span><span class="o">.</span><span class="n">pt</span>
+<span class="n">wget</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">files</span><span class="o">.</span><span class="n">ipd</span><span class="o">.</span><span class="n">uw</span><span class="o">.</span><span class="n">edu</span><span class="o">/</span><span class="n">pub</span><span class="o">/</span><span class="n">RFdiffusion</span><span class="o">/</span><span class="n">e29311f6f1bf1af907f9ef9f44b8328b</span><span class="o">/</span><span class="n">Complex_base_ckpt</span><span class="o">.</span><span class="n">pt</span>
+<span class="n">wget</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">files</span><span class="o">.</span><span class="n">ipd</span><span class="o">.</span><span class="n">uw</span><span class="o">.</span><span class="n">edu</span><span class="o">/</span><span class="n">pub</span><span class="o">/</span><span class="n">RFdiffusion</span><span class="o">/</span><span class="mi">60</span><span class="n">f09a193fb5e5ccdc4980417708dbab</span><span class="o">/</span><span class="n">Complex_Fold_base_ckpt</span><span class="o">.</span><span class="n">pt</span>
+<span class="n">wget</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">files</span><span class="o">.</span><span class="n">ipd</span><span class="o">.</span><span class="n">uw</span><span class="o">.</span><span class="n">edu</span><span class="o">/</span><span class="n">pub</span><span class="o">/</span><span class="n">RFdiffusion</span><span class="o">/</span><span class="mi">74</span><span class="n">f51cfb8b440f50d70878e05361d8f0</span><span class="o">/</span><span class="n">InpaintSeq_ckpt</span><span class="o">.</span><span class="n">pt</span>
+<span class="n">wget</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">files</span><span class="o">.</span><span class="n">ipd</span><span class="o">.</span><span class="n">uw</span><span class="o">.</span><span class="n">edu</span><span class="o">/</span><span class="n">pub</span><span class="o">/</span><span class="n">RFdiffusion</span><span class="o">/</span><span class="mi">76</span><span class="n">d00716416567174cdb7ca96e208296</span><span class="o">/</span><span class="n">InpaintSeq_Fold_ckpt</span><span class="o">.</span><span class="n">pt</span>
+<span class="n">wget</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">files</span><span class="o">.</span><span class="n">ipd</span><span class="o">.</span><span class="n">uw</span><span class="o">.</span><span class="n">edu</span><span class="o">/</span><span class="n">pub</span><span class="o">/</span><span class="n">RFdiffusion</span><span class="o">/</span><span class="mi">5532</span><span class="n">d2e1f3a4738decd58b19d633b3c3</span><span class="o">/</span><span class="n">ActiveSite_ckpt</span><span class="o">.</span><span class="n">pt</span>
+<span class="n">wget</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">files</span><span class="o">.</span><span class="n">ipd</span><span class="o">.</span><span class="n">uw</span><span class="o">.</span><span class="n">edu</span><span class="o">/</span><span class="n">pub</span><span class="o">/</span><span class="n">RFdiffusion</span><span class="o">/</span><span class="mi">12</span><span class="n">fc204edeae5b57713c5ad7dcb97d39</span><span class="o">/</span><span class="n">Base_epoch8_ckpt</span><span class="o">.</span><span class="n">pt</span>
+
+<span class="n">Optional</span><span class="p">:</span>
+<span class="n">wget</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">files</span><span class="o">.</span><span class="n">ipd</span><span class="o">.</span><span class="n">uw</span><span class="o">.</span><span class="n">edu</span><span class="o">/</span><span class="n">pub</span><span class="o">/</span><span class="n">RFdiffusion</span><span class="o">/</span><span class="n">f572d396fae9206628714fb2ce00f72e</span><span class="o">/</span><span class="n">Complex_beta_ckpt</span><span class="o">.</span><span class="n">pt</span>
+
+<span class="c1"># original structure prediction weights</span>
+<span class="n">wget</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">files</span><span class="o">.</span><span class="n">ipd</span><span class="o">.</span><span class="n">uw</span><span class="o">.</span><span class="n">edu</span><span class="o">/</span><span class="n">pub</span><span class="o">/</span><span class="n">RFdiffusion</span><span class="o">/</span><span class="mi">1</span><span class="n">befcb9b28e2f778f53d47f18b7597fa</span><span class="o">/</span><span class="n">RF_structure_prediction_weights</span><span class="o">.</span><span class="n">pt</span>
+</pre></div>
+</div>
+<section id="conda-install-se3-transformer">
+<h3>Conda Install SE3-Transformer<a class="headerlink" href="#conda-install-se3-transformer" title="Link to this heading">¶</a></h3>
+<p>Ensure that you have either <a class="reference external" href="https://conda.io/projects/conda/en/latest/user-guide/install/index.html">Anaconda or Miniconda</a> installed.</p>
+<p>You also need to install <a class="reference external" href="https://developer.nvidia.com/blog/accelerating-se3-transformers-training-using-an-nvidia-open-source-model-implementation/">NVIDIA’s implementation of SE(3)-Transformers</a> Here is how to install the NVIDIA SE(3)-Transformer code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">env</span> <span class="n">create</span> <span class="o">-</span><span class="n">f</span> <span class="n">env</span><span class="o">/</span><span class="n">SE3nv</span><span class="o">.</span><span class="n">yml</span>
+
+<span class="n">conda</span> <span class="n">activate</span> <span class="n">SE3nv</span>
+<span class="n">cd</span> <span class="n">env</span><span class="o">/</span><span class="n">SE3Transformer</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">cache</span><span class="o">-</span><span class="nb">dir</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">install</span>
+<span class="n">cd</span> <span class="o">../..</span> <span class="c1"># change into the root directory of the repository</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">e</span> <span class="o">.</span> <span class="c1"># install the rfdiffusion module from the root of the repository</span>
+</pre></div>
+</div>
+<p>Anytime you run diffusion you should be sure to activate this conda environment by running the following command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">activate</span> <span class="n">SE3nv</span>
+</pre></div>
+</div>
+<p>Total setup should take less than 30 minutes on a standard desktop computer.
+Note: Due to the variation in GPU types and drivers that users have access to, we are not able to make one environment that will run on all setups. As such, we are only providing a yml file with support for CUDA 11.1 and leaving it to each user to customize it to work on their setups. This customization will involve changing the cudatoolkit and (possibly) the PyTorch version specified in the yml file.</p>
+<hr class="docutils" />
+</section>
+<section id="get-ppi-scaffold-examples">
+<h3>Get PPI Scaffold Examples<a class="headerlink" href="#get-ppi-scaffold-examples" title="Link to this heading">¶</a></h3>
+<p>To run the scaffolded protein binder design (PPI) examples, we have provided some example scaffold files (<code class="docutils literal notranslate"><span class="pre">examples/ppi_scaffolds_subset.tar.gz</span></code>).
+You’ll need to untar this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tar</span> <span class="o">-</span><span class="n">xvf</span> <span class="n">examples</span><span class="o">/</span><span class="n">ppi_scaffolds_subset</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span> <span class="o">-</span><span class="n">C</span> <span class="n">examples</span><span class="o">/</span>
+</pre></div>
+</div>
+<p>We will explain what these files are and how to use them in the Fold Conditioning section.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Link to this heading">¶</a></h2>
+<p>In this section we will demonstrate how to run diffusion.</p>
+<p align="center">
+  <img src="./img/main.png" alt="alt text" width="1100px" align="middle"/>
+</p>
+<section id="running-the-diffusion-script">
+<h3>Running the diffusion script<a class="headerlink" href="#running-the-diffusion-script" title="Link to this heading">¶</a></h3>
+<p>The actual script you will execute is called <code class="docutils literal notranslate"><span class="pre">scripts/run_inference.py</span></code>. There are many ways to run it, governed by hydra configs.
+<a class="reference external" href="https://hydra.cc/docs/configure_hydra/intro/">Hydra configs</a> are a nice way of being able to specify many different options, with sensible defaults drawn <em>directly</em> from the model checkpoint, so inference should always, by default, match training.
+What this means is that the default values in <code class="docutils literal notranslate"><span class="pre">config/inference/base.yml</span></code> might not match the actual values used during inference, with a specific checkpoint. This is all handled under the hood.</p>
+<hr class="docutils" />
+</section>
+<section id="basic-execution-an-unconditional-monomer">
+<h3>Basic execution - an unconditional monomer<a class="headerlink" href="#basic-execution-an-unconditional-monomer" title="Link to this heading">¶</a></h3>
+<img src="./img/cropped_uncond.png" alt="alt text" width="400px" align="right"/>
+<p>Let’s first look at how you would do unconditional design of a protein of length 150aa.
+For this, we just need to specify three things:</p>
+<ol class="arabic simple">
+<li><p>The length of the protein</p></li>
+<li><p>The location where we want to write files to</p></li>
+<li><p>The number of designs we want</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">scripts</span><span class="o">/</span><span class="n">run_inference</span><span class="o">.</span><span class="n">py</span> <span class="s1">&#39;contigmap.contigs=[150-150]&#39;</span> <span class="n">inference</span><span class="o">.</span><span class="n">output_prefix</span><span class="o">=</span><span class="n">test_outputs</span><span class="o">/</span><span class="n">test</span> <span class="n">inference</span><span class="o">.</span><span class="n">num_designs</span><span class="o">=</span><span class="mi">10</span>
+</pre></div>
+</div>
+<p>Let’s look at this in detail.
+Firstly, what is <code class="docutils literal notranslate"><span class="pre">contigmap.contigs</span></code>?
+Hydra configs tell the inference script how it should be run. To keep things organised, the config has different sub-configs, one of them being <code class="docutils literal notranslate"><span class="pre">contigmap</span></code>, which pertains to everything related to the contig string (that defines the protein being built).
+Take a look at the config file if this isn’t clear: <code class="docutils literal notranslate"><span class="pre">configs/inference/base.yml</span></code>
+Anything in the config can be overwritten manually from the command line. You could, for example, change how the diffuser works:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">diffuser</span><span class="o">.</span><span class="n">crd_scale</span><span class="o">=</span><span class="mf">0.5</span>
+</pre></div>
+</div>
+<p>… but don’t do this unless you really know what you’re doing!!</p>
+<p>Now, what does <code class="docutils literal notranslate"><span class="pre">'contigmap.contigs=[150-150]'</span></code> mean?
+To those who have used RFjoint inpainting, this might look familiar, but a little bit different. Diffusion, in fact, uses the identical ‘contig mapper’ as inpainting, except that, because we’re using hydra, we have to give this to the model in a different way. The contig string has to be passed as a single-item in a list, rather than as a string, for hydra reasons and the entire argument MUST be enclosed in <code class="docutils literal notranslate"><span class="pre">''</span></code> so that the commandline does not attempt to parse any of the special characters.</p>
+<p>The contig string allows you to specify a length range, but here, we just want a protein of 150aa in length, so you just specify [150-150]
+This will then run 10 diffusion trajectories, saving the outputs to your specified output folder.</p>
+<p>NB the first time you run RFdiffusion, it will take a while ‘Calculating IGSO3’. Once it has done this, it’ll be cached for future reference though! For an additional example of unconditional monomer generation, take a look at <code class="docutils literal notranslate"><span class="pre">./examples/design_unconditional.sh</span></code> in the repo!</p>
+<hr class="docutils" />
+</section>
+<section id="motif-scaffolding">
+<h3>Motif Scaffolding<a class="headerlink" href="#motif-scaffolding" title="Link to this heading">¶</a></h3>
+<!--
+<p align="center">
+  <img src="./img/motif.png" alt="alt text" width="700px" align="middle"/>
+</p>
+-->
+<p>RFdiffusion can be used to scaffold motifs, in a manner akin to <a class="reference external" href="https://www.science.org/doi/10.1126/science.abn2100#:~:text=The%20binding%20and%20catalytic%20functions%20of%20proteins%20are,the%20fold%20or%20secondary%20structure%20of%20the%20scaffold.">Constrained Hallucination and RFjoint Inpainting</a>. In general, RFdiffusion significantly outperforms both Constrained Hallucination and RFjoint Inpainting.</p>
+<p align="center">
+  <img src="./img/motif.png" alt="alt text" width="700px" align="middle"/>
+</p>
+<p>When scaffolding protein motifs, we need a way of specifying that we want to scaffold some particular protein input (one or more segments from a <code class="docutils literal notranslate"><span class="pre">.pdb</span></code> file), and to be able to specify how we want these connected, and by how many residues, in the new scaffolded protein. What’s more, we want to be able to sample different lengths of connecting protein, as we generally don’t know <em>a priori</em> precisely how many residues we’ll need to best scaffold a motif. This job of specifying inputs is handled by contigs, governed by the contigmap config in the hydra config. For those familiar with Constrained Hallucination or RFjoint Inpainting, the logic is very similar.
+Briefly:</p>
+<ul class="simple">
+<li><p>Anything prefixed by a letter indicates that this is a motif, with the letter corresponding to the chain letter in the input pdb files. E.g. A10-25 pertains to residues (‘A’,10),(‘A’,11)…(‘A’,25) in the corresponding input pdb</p></li>
+<li><p>Anything not prefixed by a letter indicates protein <em>to be built</em>. This can be input as a length range. These length ranges are randomly sampled each iteration of RFdiffusion inference.</p></li>
+<li><p>To specify chain breaks, we use <code class="docutils literal notranslate"><span class="pre">/0</span> </code>.</p></li>
+</ul>
+<p>In more detail, if we want to scaffold a motif, the input is just like RFjoint Inpainting, except needing to navigate the hydra config input. If we want to scaffold residues 10-25 on chain A a pdb, this would be done with <code class="docutils literal notranslate"><span class="pre">'contigmap.contigs=[5-15/A10-25/30-40]'</span></code>. This asks RFdiffusion to build 5-15 residues (randomly sampled at each inference cycle) N-terminally of A10-25 from the input pdb, followed by 30-40 residues (again, randomly sampled) to its C-terminus. If we wanted to ensure the length was always e.g. 55 residues, this can be specified with <code class="docutils literal notranslate"><span class="pre">contigmap.length=55-55</span></code>. You need to obviously also provide a path to your pdb file: <code class="docutils literal notranslate"><span class="pre">inference.input_pdb=path/to/file.pdb</span></code>. It doesn’t matter if your input pdb has residues you <em>don’t</em> want to scaffold - the contig map defines which residues in the pdb are actually used as the “motif”. In other words, even if your pdb files has a B chain, and other residues on the A chain, <em>only</em> A10-25 will be provided to RFdiffusion.</p>
+<p>To specify that we want to inpaint in the presence of a separate chain, this can be done as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;contigmap.contigs=[5-15/A10-25/30-40/0 B1-100]&#39;</span>
+</pre></div>
+</div>
+<p>Look at this carefully. <code class="docutils literal notranslate"><span class="pre">/0</span> </code> is the indicator that we want a chain break. NOTE, the space is important here. This tells the diffusion model to add a big residue jump (200aa) to the input, so that the model sees the first chain as being on a separate chain to the second.</p>
+<p>An example of motif scaffolding can be found in <code class="docutils literal notranslate"><span class="pre">./examples/design_motifscaffolding.sh</span></code>.</p>
+</section>
+<section id="the-active-site-model-holds-very-small-motifs-in-place">
+<h3>The “active site” model holds very small motifs in place<a class="headerlink" href="#the-active-site-model-holds-very-small-motifs-in-place" title="Link to this heading">¶</a></h3>
+<p>In the RFdiffusion preprint we noted that for very small motifs, RFdiffusion has the tendency to not keep them perfectly fixed in the output. Therefore, for scaffolding minimalist sites such as enzyme active sites, we fine-tuned RFdiffusion on examples similar to these tasks, allowing it to hold smaller motifs better in place, and better generate <em>in silico</em> successes. If your input functional motif is very small, we reccomend using this model, which can easily be specified using the following syntax:
+<code class="docutils literal notranslate"><span class="pre">inference.ckpt_override_path=models/ActiveSite_ckpt.pt</span></code></p>
+</section>
+<section id="the-inpaint-seq-flag">
+<h3>The <code class="docutils literal notranslate"><span class="pre">inpaint_seq</span></code> flag<a class="headerlink" href="#the-inpaint-seq-flag" title="Link to this heading">¶</a></h3>
+<p>For those familiar with RFjoint Inpainting, the contigmap.inpaint_seq input is equivalent. The idea is that often, when, for example, fusing two proteins, residues that were on the surface of a protein (and are therefore likely polar), now need to be packed into the ‘core’ of the protein. We therefore want them to become hydrophobic residues. What we can do, rather than directly mutating them to hydrophobics, is to mask their sequence identity, and allow RFdiffusion to implicitly reason over their sequence, and better pack against them. This requires a different model than the ‘base’ diffusion model, that has been trained to understand this paradigm, but this is automatically handled by the inference script (you don’t need to do anything).</p>
+<p>To specify amino acids whose sequence should be hidden, use the following syntax:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;contigmap.inpaint_seq=[A1/A30-40]&#39;</span>
+</pre></div>
+</div>
+<p>Here, we’re masking the residue identity of residue A1, and all residues between A30 and A40 (inclusive).</p>
+<p>An example of executing motif scaffolding with the <code class="docutils literal notranslate"><span class="pre">contigmap.inpaint_seq</span></code> flag is located in <code class="docutils literal notranslate"><span class="pre">./examples/design_motifscaffolding_inpaintseq.sh</span></code></p>
+</section>
+<section id="a-note-on-diffuser-t">
+<h3>A note on <code class="docutils literal notranslate"><span class="pre">diffuser.T</span></code><a class="headerlink" href="#a-note-on-diffuser-t" title="Link to this heading">¶</a></h3>
+<p>RFdiffusion was originally trained with 200 discrete timesteps. However, recent improvements have allowed us to reduce the number of timesteps we need to use at inference time. In many cases, running with as few as approximately 20 steps provides outputs of equivalent <em>in silico</em> quality to running with 200 steps (providing a 10X speedup). The default is now set to 50 steps. Noting this is important for understanding the partial diffusion, described below.</p>
+<hr class="docutils" />
+</section>
+<section id="partial-diffusion">
+<h3>Partial diffusion<a class="headerlink" href="#partial-diffusion" title="Link to this heading">¶</a></h3>
+<p>Something we can do with diffusion is to partially noise and de-noise a structure, to get some diversity around a general fold. This can work really nicely (see <a class="reference external" href="https://www.biorxiv.org/content/10.1101/2022.12.10.519862v4.abstract">Vazquez-Torres et al., BioRxiv 2022</a>).
+This is specified by using the diffuser.parial_T input, and setting a timestep to ‘noise’ to.</p>
+<p align="center">
+  <img src="./img/partial.png" alt="alt text" width="800px" align="middle"/>
+</p>
+More noise == more diversity. In Vazquez-Torres et al., 2022, we typically used `diffuser.partial_T` of approximately 80, but this was with respect to the 200 timesteps we were using. Now that the default `diffuser.T` is 50, you will need to adjust diffuser.partial_T accordingly. E.g. now that `diffuser.T=50`, the equivalent of 80 noising steps is `diffuser.partial_T=20`. We strongly recommend sampling different values for `partial_T` however, to find the best parameters for your specific problem.
+<p>When doing partial diffusion, because we are now diffusing from a known structure, this creates certain constraints. You can still use the contig input, but <em>this has to yield a contig string exactly the same length as the input protein</em>. E.g. if you have a binder:target complex, and you want to diversify the binder (length 100, chain A), you would need to input something like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;contigmap.contigs=[100-100/0 B1-150]&#39;</span> <span class="n">diffuser</span><span class="o">.</span><span class="n">partial_T</span><span class="o">=</span><span class="mi">20</span>
+</pre></div>
+</div>
+<p>The reason for this is that, if your input protein was only 80 amino acids, but you’ve specified a desired length of 100, we don’t know where to diffuse those extra 20 amino acids from, and hence, they will not lie in the distribution that RFdiffusion has learned to denoise from.</p>
+<p>An example of partial diffusion can be found in <code class="docutils literal notranslate"><span class="pre">./examples/design_partialdiffusion.sh</span></code>!</p>
+<p>You can also keep parts of the sequence of the diffused chain fixed, if you want. An example of why you might want to do this is in the context of helical peptide binding. If you’ve threaded a helical peptide sequence onto an ideal helix, and now want to diversify the complex, allowing the helix to be predicted now not as an ideal helix, you might do something like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;contigmap.contigs=[100-100/0 20-20]&#39;</span> <span class="s1">&#39;contigmap.provide_seq=[100-119]&#39;</span> <span class="n">diffuser</span><span class="o">.</span><span class="n">partial_T</span><span class="o">=</span><span class="mi">10</span>
+</pre></div>
+</div>
+<p>In this case, the 20aa chain is the helical peptide. The <code class="docutils literal notranslate"><span class="pre">contigmap.provide_seq</span></code> input is zero-indexed, and you can provide a range (so 100-119 is an inclusive range, unmasking the whole sequence of the peptide). Multiple sequence ranges can be provided separated by a comma, e.g. <code class="docutils literal notranslate"><span class="pre">'contigmap.provide_seq=[172-177,200-205]'</span></code>.</p>
+<p>Note that the provide_seq option requires using a different model checkpoint, but this is automatically handled by the inference script.</p>
+<p>An example of partial diffusion with providing sequence in diffused regions can be found in <code class="docutils literal notranslate"><span class="pre">./examples/design_partialdiffusion_withseq.sh</span></code>. The same example specifying multiple sequence ranges can be found in <code class="docutils literal notranslate"><span class="pre">./examples/design_partialdiffusion_multipleseq.sh</span></code>.</p>
+<hr class="docutils" />
+</section>
+<section id="binder-design">
+<h3>Binder Design<a class="headerlink" href="#binder-design" title="Link to this heading">¶</a></h3>
+<p>Hopefully, it’s now obvious how you might make a binder with diffusion! Indeed, RFdiffusion shows excellent <em>in silico</em> and experimental ability to design <em>de novo</em> binders.</p>
+<p align="center">
+  <img src="./img/binder.png" alt="alt text" width="950px" align="middle"/>
+</p>
+<p>If chain B is your target, then you could do it like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">scripts</span><span class="o">/</span><span class="n">run_inference</span><span class="o">.</span><span class="n">py</span> <span class="s1">&#39;contigmap.contigs=[B1-100/0 100-100]&#39;</span> <span class="n">inference</span><span class="o">.</span><span class="n">output_prefix</span><span class="o">=</span><span class="n">test_outputs</span><span class="o">/</span><span class="n">binder_test</span> <span class="n">inference</span><span class="o">.</span><span class="n">num_designs</span><span class="o">=</span><span class="mi">10</span>
+</pre></div>
+</div>
+<p>This will generate 100 residue long binders to residues 1-100 of chain B.</p>
+<p>However, this probably isn’t the best way of making binders. Because diffusion is somewhat computationally-intensive, we need to try and make it as fast as possible. Providing the whole of your target, uncropped, is going to make diffusion very slow if your target is big (and most targets-of-interest, such as cell-surface receptors tend to be <em>very</em> big). One tried-and-true method to speed up binder design is to crop the target protein around the desired interface location. BUT! This creates a problem: if you crop your target and potentially expose hydrophobic core residues which were buried before the crop, how can you guarantee the binder will go to the intended interface site on the surface of the target, and not target the tantalizing hydrophobic patch you have just artificially created?</p>
+<p>We solve this issue by providing the model with what we call “hotspot residues”. The complex models we refer to earlier in this README file have all been trained with hotspot residues, in this training regime, during each example, the model is told (some of) the residues on the target protein which contact the target (i.e., resides that are part of the interface). The model readily learns that it should be making an interface which involved these hotspot residues. At inference time then, we can provide our own hotspot residues to define a region which the binder must contact. These are specified like this: <code class="docutils literal notranslate"><span class="pre">'ppi.hotspot_res=[A30,A33,A34]'</span></code>, where <code class="docutils literal notranslate"><span class="pre">A</span></code> is the chain ID in the input pdb file of the hotspot residue and the number is the residue index in the input pdb file of the hotspot residue.</p>
+<p>Finally, it has been observed that the default RFdiffusion model often generates mostly helical binders. These have high computational and experimental success rates. However, there may be cases where other kinds of topologies may be desired. For this, we include a “beta” model, which generates a greater diversity of topologies, but has not been extensively experimentally validated. Try this at your own risk:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">inference</span><span class="o">.</span><span class="n">ckpt_override_path</span><span class="o">=</span><span class="n">models</span><span class="o">/</span><span class="n">Complex_beta_ckpt</span><span class="o">.</span><span class="n">pt</span>
+</pre></div>
+</div>
+<p>An example of binder design with RFdiffusion can be found in <code class="docutils literal notranslate"><span class="pre">./examples/design_ppi.sh</span></code>.</p>
+</section>
+<hr class="docutils" />
+<section id="practical-considerations-for-binder-design">
+<h3>Practical Considerations for Binder Design<a class="headerlink" href="#practical-considerations-for-binder-design" title="Link to this heading">¶</a></h3>
+<p>RFdiffusion is an extremely powerful binder design tool but it is not magic. In this section we will walk through some common pitfalls in RFdiffusion binder design and offer advice on how to get the most out of this method.</p>
+<section id="selecting-a-target-site">
+<h4>Selecting a Target Site<a class="headerlink" href="#selecting-a-target-site" title="Link to this heading">¶</a></h4>
+<p>Not every site on a target protein is a good candidate for binder design. For a site to be an attractive candidate for binding it should have &gt;~3 hydrophobic residues for the binder to interact with. Binding to charged polar sites is still quite hard. Binding to sites with glycans close to them is also hard since they often become ordered upon binding and you will take an energetic hit for that. Historically, binder design has also avoided unstructured loops, it is not clear if this is still a requirement as RFdiffusion has been used to bind unstructured peptides which share a lot in common with unstructured loops.</p>
+</section>
+<section id="truncating-your-target-protein">
+<h4>Truncating your Target Protein<a class="headerlink" href="#truncating-your-target-protein" title="Link to this heading">¶</a></h4>
+<p>RFdiffusion scales in runtime as O(N^2) where N is the number of residues in your system. As such, it is a very good idea to truncate large targets so that your computations are not unnecessarily      expensive. RFdiffusion and all downstream steps (including AF2) are designed to allow for a truncated target. Truncating a target is an art. For some targets, such as multidomain extracellular membranes, a natural truncation point is where two domains are joined by a flexible linker. For other proteins, such as virus spike proteins, this truncation point is less obvious. Generally you want to preserve secondary structure and introduce as few chain breaks as possible. You should also try to leave ~10A of target protein on each side of your intended target site. We recommend using PyMol to truncate your target protein.</p>
+</section>
+<section id="picking-hotspots">
+<h4>Picking Hotspots<a class="headerlink" href="#picking-hotspots" title="Link to this heading">¶</a></h4>
+<p>Hotspots are a feature that we integrated into the model to allow for the control of the site on the target which the binder will interact with. In the paper we define a hotspot as a residue on the target protein which is within 10A Cbeta distance of the binder. Of all of the hotspots which are identified on the target 0-20% of these hotspots are actually provided to the model and the rest are masked. This is important for understanding how you should pick hotspots at inference time.; the model is expecting to have to make more contacts than you specify. We normally recommend between 3-6 hotspots, you should run a few pilot runs before generating thousands of designs to make sure the number of hotspots you are providing will give results you like.</p>
+<p>If you have run the previous PatchDock RifDock binder design pipeline, for the RFdiffusion paper we chose our hotspots to be the PatchDock residues of the target.</p>
+</section>
+<section id="binder-design-scale">
+<h4>Binder Design Scale<a class="headerlink" href="#binder-design-scale" title="Link to this heading">¶</a></h4>
+<p>In the paper, we generated ~10,000 RFdiffusion binder backbones for each target. From this set of backbones we then generated two sequences per backbone using ProteinMPNN-FastRelax (described below). We screened these ~20,000 designs using AF2 with initial guess and target templating (also described below).</p>
+<p>Given the high success rates we observed in the paper, for some targets it may be sufficient to only generate ~1,000 RFdiffusion backbones in a campaign. What you want is to get enough designs that pass pAE_interaction &lt; 10 (described more in Binder Design Filtering section) such that you are able to fill a DNA order with these successful designs. We have found that designs that do not pass pAE_interaction &lt; 10 are not worth ordering since they will likely not work experimentally.</p>
+</section>
+<section id="sequence-design-for-binders">
+<h4>Sequence Design for Binders<a class="headerlink" href="#sequence-design-for-binders" title="Link to this heading">¶</a></h4>
+<p>You may have noticed that the binders designed by RFdiffusion come out with a poly-Glycine sequence. This is not a bug. RFdiffusion is a backbone-generation model and does not generate sequence for the designed region, therefore, another method must be used to assign a sequence to the binders. In the paper we use the ProteinMPNN-FastRelax protocol to do sequence design. We recommend that you do this as well.  The code for this protocol can be found in <a class="reference external" href="https://github.com/nrbennet/dl_binder_design">this GitHub repo</a>. While we did not find the FastRelax part of the protocol to yield the large in silico success rate improvements that it yielded with the RifDock-generated docks, it is still a good way to increase your number of shots-on-goal for each (computationally expensive) RFdiffusion backbone. If you would prefer to simply run ProteinMPNN on your binders without the FastRelax step, that will work fine but will be more computationally expensive.</p>
+</section>
+<section id="binder-design-filtering">
+<h4>Binder Design Filtering<a class="headerlink" href="#binder-design-filtering" title="Link to this heading">¶</a></h4>
+<p>One of the most important parts of the binder design pipeline is a filtering step to evaluate if your binders are actually predicted to work. In the paper we filtered using AF2 with an initial guess and target templating, scripts for this protocol are available <a class="reference external" href="https://github.com/nrbennet/dl_binder_design">here</a>. We have found that filtering at pae_interaction &lt; 10 is a good predictor of a binder working experimentally.</p>
+</section>
+<hr class="docutils" />
+<section id="fold-conditioning">
+<h4>Fold Conditioning<a class="headerlink" href="#fold-conditioning" title="Link to this heading">¶</a></h4>
+<p>Something that works really well is conditioning binder design (or monomer generation) on particular topologies. This is achieved by providing (partial) secondary structure and block adjacency information (to a model that has been trained to condition on this).</p>
+<p align="center">
+  <img src="./img/fold_cond.png" alt="alt text" width="950px" align="middle"/>
+</p>
+We are still working out the best way to actually generate this input at inference time, but for now, we have settled upon generating inputs directly from pdb structures. This permits 'low resolution' specification of output topology (i.e., I want a TIM barrel but I don't care precisely where resides are). In `helper_scripts/`, there's a script called `make_secstruc_adj.py`, which can be used as follows:
+<p>e.g. 1:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">make_secstruc_adj</span><span class="o">.</span><span class="n">py</span> <span class="o">--</span><span class="n">input_pdb</span> <span class="o">./</span><span class="mi">2</span><span class="n">KL8</span><span class="o">.</span><span class="n">pdb</span> <span class="o">--</span><span class="n">out_dir</span> <span class="o">/</span><span class="n">my</span><span class="o">/</span><span class="nb">dir</span><span class="o">/</span><span class="k">for</span><span class="o">/</span><span class="n">adj_secstruct</span>
+</pre></div>
+</div>
+<p>or e.g. 2:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">make_secstruc_adj</span><span class="o">.</span><span class="n">py</span> <span class="o">--</span><span class="n">pdb_dir</span> <span class="o">./</span><span class="n">pdbs</span><span class="o">/</span> <span class="o">--</span><span class="n">out_dir</span> <span class="o">/</span><span class="n">my</span><span class="o">/</span><span class="nb">dir</span><span class="o">/</span><span class="k">for</span><span class="o">/</span><span class="n">adj_secstruct</span>
+</pre></div>
+</div>
+<p>This will process either a single pdb, or a folder of pdbs, and output a secondary structure and adjacency pytorch file, ready to go into the model. For now (although this might not be necessary), you should also generate these files for the target protein (if you’re doing PPI), and provide this to the model. You can then use these at inference as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">scripts</span><span class="o">/</span><span class="n">run_inference</span><span class="o">.</span><span class="n">py</span> <span class="n">inference</span><span class="o">.</span><span class="n">output_prefix</span><span class="o">=./</span><span class="n">scaffold_conditioned_test</span><span class="o">/</span><span class="n">test</span> <span class="n">scaffoldguided</span><span class="o">.</span><span class="n">scaffoldguided</span><span class="o">=</span><span class="kc">True</span> <span class="n">scaffoldguided</span><span class="o">.</span><span class="n">target_pdb</span><span class="o">=</span><span class="kc">False</span> <span class="n">scaffoldguided</span><span class="o">.</span><span class="n">scaffold_dir</span><span class="o">=./</span><span class="n">examples</span><span class="o">/</span><span class="n">ppi_scaffolds_subset</span>
+</pre></div>
+</div>
+<p>A few extra things:</p>
+<ol class="arabic simple">
+<li><p>As mentioned above, for PPI, you will want to provide a target protein, along with its secondary structure and block adjacency. This can be done by adding:</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">scaffoldguided</span><span class="o">.</span><span class="n">target_pdb</span><span class="o">=</span><span class="kc">True</span> <span class="n">scaffoldguided</span><span class="o">.</span><span class="n">target_path</span><span class="o">=</span><span class="n">input_pdbs</span><span class="o">/</span><span class="n">insulin_target</span><span class="o">.</span><span class="n">pdb</span> <span class="n">inference</span><span class="o">.</span><span class="n">output_prefix</span><span class="o">=</span><span class="n">insulin_binder</span><span class="o">/</span><span class="n">jordi_ss_insulin_noise0_job0</span> <span class="s1">&#39;ppi.hotspot_res=[A59,A83,A91]&#39;</span> <span class="n">scaffoldguided</span><span class="o">.</span><span class="n">target_ss</span><span class="o">=</span><span class="n">target_folds</span><span class="o">/</span><span class="n">insulin_target_ss</span><span class="o">.</span><span class="n">pt</span> <span class="n">scaffoldguided</span><span class="o">.</span><span class="n">target_adj</span><span class="o">=</span><span class="n">target_folds</span><span class="o">/</span><span class="n">insulin_target_adj</span><span class="o">.</span><span class="n">pt</span>
+</pre></div>
+</div>
+<p>To generate these block adjacency and secondary structure inputs, you can use the helper script.</p>
+<p>This will now generate 3-helix bundles to the insulin target.</p>
+<p>For ppi, it’s probably also worth adding this flag:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">scaffoldguided</span><span class="o">.</span><span class="n">mask_loops</span><span class="o">=</span><span class="kc">False</span>
+</pre></div>
+</div>
+<p>This is quite important to understand. During training, we mask some of the secondary structure and block adjacency. This is convenient, because it allows us to, at inference, easily add extra residues without having to specify precise secondary structure for every residue. E.g. if you want to make a long 3 helix bundle, you could mask the loops, and add e.g. 20 more ‘mask’ tokens to that loop. The model will then (presumbly) choose to make e.g. 15 of these residues into helices (to extend the 3HB), and then make a 5aa loop. But, you didn’t have to specify that, which is nice. The way this would be done would be like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">scaffoldguided</span><span class="o">.</span><span class="n">mask_loops</span><span class="o">=</span><span class="kc">True</span> <span class="n">scaffoldguided</span><span class="o">.</span><span class="n">sampled_insertion</span><span class="o">=</span><span class="mi">15</span> <span class="n">scaffoldguided</span><span class="o">.</span><span class="n">sampled_N</span><span class="o">=</span><span class="mi">5</span> <span class="n">scaffoldguided</span><span class="o">.</span><span class="n">sampled_C</span><span class="o">=</span><span class="mi">5</span>
+</pre></div>
+</div>
+<p>This will, at each run of inference, sample up to 15 residues to insert into loops in your 3HB input, and up to 5 additional residues at N and C terminus.
+This strategy is very useful if you don’t have a large set of pdbs to make block adjacencies for. For example, we showed that we could generate loads of lengthened TIM barrels from a single starting pdb with this strategy. However, for PPI, if you’re using the provided scaffold sets, it shouldn’t be necessary (because there are so many scaffolds to start from, generating extra diversity isn’t especially necessary).</p>
+<p>Finally, if you have a big directory of block adjacency/secondary structure files, but don’t want to use all of them, you can make a <code class="docutils literal notranslate"><span class="pre">.txt</span></code> file of the ones you want to use, and pass:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">scaffoldguided</span><span class="o">.</span><span class="n">scaffold_list</span><span class="o">=</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="nb">list</span>
+</pre></div>
+</div>
+<p>For PPI, we’ve consistently seen that reducing the noise added at inference improves designs. This comes at the expense of diversity, but, given that the scaffold sets are huge, this probably doesn’t matter too much. We therefore recommend lowering the noise. 0.5 is probably a good compromise:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">denoiser</span><span class="o">.</span><span class="n">noise_scale_ca</span><span class="o">=</span><span class="mf">0.5</span> <span class="n">denoiser</span><span class="o">.</span><span class="n">noise_scale_frame</span><span class="o">=</span><span class="mf">0.5</span>
+</pre></div>
+</div>
+<p>This just scales the amount of noise we add to the translations (<code class="docutils literal notranslate"><span class="pre">noise_scale_ca</span></code>) and rotations (<code class="docutils literal notranslate"><span class="pre">noise_scale_frame</span></code>) by, in this case, 0.5.</p>
+<p>An additional example of PPI with fold conditioning is available here: <code class="docutils literal notranslate"><span class="pre">./examples/design_ppi_scaffolded.sh</span></code></p>
+<p>In <a class="reference external" href="https://www.biorxiv.org/content/10.1101/2024.07.16.603789v1">Liu et al., 2024</a>, we demonstrate that RFdiffusion can be used to design binders to flexible peptides, where the 3D coordinates of the peptide <em>are not</em> specified, but the secondary structure can be. This allows a user to design binders to a peptide in e.g. either a helical or beta state.</p>
+<p>The principle here is that we provide an input pdb structure of a peptide, but specify that we want to mask the 3D structure:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">inference</span><span class="o">.</span><span class="n">input_pdb</span><span class="o">=</span><span class="n">input_pdbs</span><span class="o">/</span><span class="n">tau_peptide</span><span class="o">.</span><span class="n">pdb</span> <span class="s1">&#39;contigmap.contigs=[70-100/0 B165-178]&#39;</span> <span class="s1">&#39;contigmap.inpaint_str=[B165-178]&#39;</span>
+</pre></div>
+</div>
+<p>Here, we’re making 70-100 amino acid binders to the tau peptide (pdb indices B165-178), and we mask the structure with <code class="docutils literal notranslate"><span class="pre">configmap.inpaint_str</span></code> on this peptide. However, we can then specify that we want it to adopt a beta (strand) secondary structure:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">scaffoldguided</span><span class="o">.</span><span class="n">scaffoldguided</span><span class="o">=</span><span class="kc">True</span> <span class="s1">&#39;contigmap.inpaint_str_strand=[B165-178]&#39;</span>
+</pre></div>
+</div>
+<p>Alternatively, you could specify <code class="docutils literal notranslate"><span class="pre">contigmap.inpaint_str_helix</span></code> to make it a helix!</p>
+<p>See the example in <code class="docutils literal notranslate"><span class="pre">examples/design_ppi_flexible_peptide_with_secondarystructure_specification.sh</span></code>.</p>
+</section>
+<hr class="docutils" />
+<section id="generation-of-symmetric-oligomers">
+<h4>Generation of Symmetric Oligomers<a class="headerlink" href="#generation-of-symmetric-oligomers" title="Link to this heading">¶</a></h4>
+<p>We’re going to switch gears from discussing PPI and look at another task at which RFdiffusion performs well on: symmetric oligomer design. This is done by symmetrising the noise we sample at t=T, and symmetrising the input at every timestep. We have currently implemented the following for use (with the others coming soon!):</p>
+<ul class="simple">
+<li><p>Cyclic symmetry</p></li>
+<li><p>Dihedral symmetry</p></li>
+<li><p>Tetrahedral symmetry</p></li>
+</ul>
+<p align="center">
+  <img src="./img/olig2.png" alt="alt text" width="1000px" align="middle"/>
+</p>
+<p>Here’s an example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">scripts</span><span class="o">/</span><span class="n">run_inference</span><span class="o">.</span><span class="n">py</span> <span class="o">--</span><span class="n">config</span><span class="o">-</span><span class="n">name</span> <span class="n">symmetry</span>  <span class="n">inference</span><span class="o">.</span><span class="n">symmetry</span><span class="o">=</span><span class="n">tetrahedral</span> <span class="s1">&#39;contigmap.contigs=[360]&#39;</span> <span class="n">inference</span><span class="o">.</span><span class="n">output_prefix</span><span class="o">=</span><span class="n">test_sample</span><span class="o">/</span><span class="n">tetrahedral</span> <span class="n">inference</span><span class="o">.</span><span class="n">num_designs</span><span class="o">=</span><span class="mi">1</span>
+</pre></div>
+</div>
+<p>Here, we’ve specified a different <code class="docutils literal notranslate"><span class="pre">config</span></code> file (with <code class="docutils literal notranslate"><span class="pre">--config-name</span> <span class="pre">symmetry</span></code>). Because symmetric diffusion is quite different from the diffusion described above, we packaged a whole load of symmetry-related configs into a new file (see <code class="docutils literal notranslate"><span class="pre">configs/inference/symmetry.yml</span></code>). Using this config file now puts diffusion in <code class="docutils literal notranslate"><span class="pre">symmetry-mode</span></code>.</p>
+<p>The symmetry type is then specified with <code class="docutils literal notranslate"><span class="pre">inference.symmetry=</span></code>. Here, we’re specifying tetrahedral symmetry, but you could also choose cyclic (e.g. <code class="docutils literal notranslate"><span class="pre">c4</span></code>) or dihedral (e.g. <code class="docutils literal notranslate"><span class="pre">d2</span></code>).</p>
+<p>The configmap.contigs length refers to the <em>total</em> length of your oligomer. Therefore, it <em>must</em> be divisible by <em>n</em> chains.</p>
+<p>More examples of designing oligomers can be found here: <code class="docutils literal notranslate"><span class="pre">./examples/design_cyclic_oligos.sh</span></code>, <code class="docutils literal notranslate"><span class="pre">./examples/design_dihedral_oligos.sh</span></code>, <code class="docutils literal notranslate"><span class="pre">./examples/design_tetrahedral_oligos.sh</span></code>.</p>
+</section>
+<hr class="docutils" />
+<section id="using-auxiliary-potentials">
+<h4>Using Auxiliary Potentials<a class="headerlink" href="#using-auxiliary-potentials" title="Link to this heading">¶</a></h4>
+<p>Performing diffusion with symmetrized noise may give you the idea that we could use other external interventions during the denoising process to guide diffusion. One such intervention that we have implemented is auxiliary potentials. Auxiliary potentials can be very useful for guiding the inference process. E.g. whereas in RFjoint inpainting, we have little/no control over the final shape of an output, in diffusion we can readily force the network to make, for example, a well-packed protein.
+This is achieved in the updates we make at each step.</p>
+<p>Let’s go a little deeper into how the diffusion process works:
+At timestep T (the first step of the reverse-diffusion inference process), we sample noise from a known <em>prior</em> distribution. The model then makes a prediction of what the final structure should be, and we use these two states (noise at time T, prediction of the structure at time 0) to back-calculate where t=T-1 would have been. We therefore have a vector pointing from each coordinate at time T, to their corresponding, back-calculated position at time T-1.
+But, we want to be able to bias this update, to <em>push</em> the trajectory towards some desired state. This can be done by biasing that vector with another vector, which points towards a position where that residue would <em>reduce</em> the ‘loss’ as defined by your potential. E.g. if we want to use the <code class="docutils literal notranslate"><span class="pre">monomer_ROG</span></code> potential, which seeks to minimise the radius of gyration of the final protein, if the models prediction of t=0 is very elongated, each of those distant residues will have a larger gradient when we differentiate the <code class="docutils literal notranslate"><span class="pre">monomer_ROG</span></code> potential w.r.t. their positions. These gradients, along with the corresponding scale, can be combined into a vector, which is then combined with the original update vector to make a “biased update” at that timestep.</p>
+<p>The exact parameters used when applying these potentials matter. If you weight them too strongly, you’re not going to end up with a good protein. Too weak, and they’ll have little effect. We’ve explored these potentials in a few different scenarios, and have set sensible defaults, if you want to use them. But, if you feel like they’re too weak/strong, or you just fancy exploring, do play with the parameters (in the <code class="docutils literal notranslate"><span class="pre">potentials</span></code> part of the config file).</p>
+<p>Potentials are specified as a list of strings with each string corresponding to a potential. The argument for potentials is <code class="docutils literal notranslate"><span class="pre">potentials.guiding_potentials</span></code>. Within the string per-potential arguments may be specified in the following syntax: <code class="docutils literal notranslate"><span class="pre">arg_name1:arg_value1,arg_name2:arg_value2,...,arg_nameN:arg_valueN</span></code>. The only argument that is required for each potential is the name of the potential that you wish to apply, the name of this argument is <code class="docutils literal notranslate"><span class="pre">type</span></code> as-in the type of potential you wish to use. Some potentials such as <code class="docutils literal notranslate"><span class="pre">olig_contacts</span></code> and <code class="docutils literal notranslate"><span class="pre">substrate_contacts</span></code> take global options such as <code class="docutils literal notranslate"><span class="pre">potentials.substrate</span></code>, see <code class="docutils literal notranslate"><span class="pre">config/inference/base.yml</span></code> for all the global arguments associated with potentials. Additionally, it is useful to have the effect of the potential “decay” throughout the trajectory, such that in the beginning the effect of the potential is 1x strength, and by the end is much weaker. These decays (<code class="docutils literal notranslate"><span class="pre">constant</span></code>,<code class="docutils literal notranslate"><span class="pre">linear</span></code>,<code class="docutils literal notranslate"><span class="pre">quadratic</span></code>,<code class="docutils literal notranslate"><span class="pre">cubic</span></code>) can be set with the <code class="docutils literal notranslate"><span class="pre">potentials.guide_decay</span></code> argument.</p>
+<p>Here’s an example of how to specify a potential:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">potentials</span><span class="o">.</span><span class="n">guiding_potentials</span><span class="o">=</span><span class="p">[</span>\<span class="s2">&quot;type:olig_contacts,weight_intra:1,weight_inter:0.1</span><span class="se">\&quot;</span><span class="s2">] potentials.olig_intra_all=True potentials.olig_inter_all=True potentials.guide_scale=2 potentials.guide_decay=&#39;quadratic&#39;</span>
+</pre></div>
+</div>
+<p>We are still fully characterising how/when to use potentials, and we strongly recommend exploring different parameters yourself, as they are clearly somewhat case-dependent. So far, it is clear that they can be helpful for motif scaffolding and symmetric oligomer generation. However, they seem to interact weirdly with hotspot residues in PPI. We think we know why this is, and will work in the coming months to write better potentials for PPI. And please note, it is often good practice to start with <em>no potentials</em> as a baseline, then slowly increase their strength. For the oligomer contacts potentials, start with the ones provided in the examples, and note that the <code class="docutils literal notranslate"><span class="pre">intra</span></code> chain potential often should be higher than the <code class="docutils literal notranslate"><span class="pre">inter</span></code> chain potential.</p>
+<p>We have already implemented several potentials but it is relatively straightforward to add more, if you want to push your designs towards some specified goal. The <em>only</em> condition is that, whatever potential you write, it is differentiable. Take a look at <code class="docutils literal notranslate"><span class="pre">potentials.potentials.py</span></code> for examples of the potentials we have implemented so far.</p>
+</section>
+<hr class="docutils" />
+<section id="symmetric-motif-scaffolding">
+<h4>Symmetric Motif Scaffolding.<a class="headerlink" href="#symmetric-motif-scaffolding" title="Link to this heading">¶</a></h4>
+<p>We can also combine symmetric diffusion with motif scaffolding to scaffold motifs symmetrically.
+Currently, we have one way for performing symmetric motif scaffolding. That is by specifying the position of the motif specified w.r.t. the symmetry axes.</p>
+<p align="center">
+  <img src="./img/sym_motif.png" alt="alt text" width="1000px" align="middle"/>
+</p>
+<p><strong>Special input .pdb and contigs requirements</strong></p>
+<p>For now, we require that a user have a symmetrized version of their motif in their input pdb for symmetric motif scaffolding. There are two main reasons for this. First, the model is trained by centering any motif at the origin, and thus the code also centers motifs at the origin automatically. Therefore, if your motif is not symmetrized, this centering action will result in an asymmetric unit that now has the origin and axes of symmetry running right through it (bad). Secondly, the diffusion code uses a canonical set of symmetry axes (rotation matrices) to propogate the asymmetric unit of a motif. In order to prevent accidentally running diffusion trajectories which are propogating your motif in ways you don’t intend, we require that a user symmetrize an input using the RFdiffusion canonical symmetry axes.</p>
+<p><strong>RFdiffusion canonical symmetry axes</strong></p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Group</p></th>
+<th class="head text-center"><p>Axis</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>Cyclic</p></td>
+<td class="text-center"><p>Z</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>Dihedral (cyclic)</p></td>
+<td class="text-center"><p>Z</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>Dihedral (flip/reflection)</p></td>
+<td class="text-center"><p>X</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Example: Inputs for symmetric motif scaffolding with motif position specified w.r.t the symmetry axes.</strong></p>
+<p>This example script <code class="docutils literal notranslate"><span class="pre">examples/design_nickel.sh</span></code> can be used to scaffold the C4 symmetric Nickel binding domains shown in the RFdiffusion paper. It combines many concepts discussed earlier, including symmetric oligomer generation, motif scaffolding, and use of guiding potentials.</p>
+<p>Note that the contigs should specify something that is precisely symmetric. Things will break if this is not the case.</p>
+</section>
+<hr class="docutils" />
+<section id="macrocyclic-peptide-design-with-rfpeptides">
+<h4>Macrocyclic peptide design with RFpeptides<a class="headerlink" href="#macrocyclic-peptide-design-with-rfpeptides" title="Link to this heading">¶</a></h4>
+<img src="./img/rfpeptides_fig1.png" alt="alt text" width="400px" align="right"/>
+We have recently published the RFpeptides protocol for using RFdiffusion to design macrocyclic peptides that bind target proteins with atomic accuracy (Rettie, Juergens, Adebomi, et al., 2025). In this section we briefly outline how to run this inference protocol. We have added two examples for running macrocycle design with the RFpeptides protocol. One for monomeric design, and one for binder design.
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">examples</span><span class="o">/</span><span class="n">design_macrocyclic_monomer</span><span class="o">.</span><span class="n">sh</span>
+<span class="n">examples</span><span class="o">/</span><span class="n">design_macrocyclic_binder</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<section id="rfpeptides-binder-design">
+<h5>RFpeptides binder design<a class="headerlink" href="#rfpeptides-binder-design" title="Link to this heading">¶</a></h5>
+<img src="./img/rfpeptides_binder.png" alt="alt text" width="1100" align="center"/>
+<p>To design a macrocyclic peptide to bind a target, the flags needed are very similar to classic binder design, but with two additional flags:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
+
+prefix=./outputs/diffused_binder_cyclic2
+
+# Note that the indices in this pdb file have been
+# shifted by +2 in chain A relative to pdbID 7zkr.
+pdb=&#39;./input_pdbs/7zkr_GABARAP.pdb&#39;
+
+num_designs=10
+script=&quot;../scripts/run_inference.py&quot;
+$script --config-name base \
+inference.output_prefix=$prefix \
+inference.num_designs=$num_designs \
+&#39;contigmap.contigs=[12-18 A3-117/0]&#39; \
+inference.input_pdb=$pdb \
+inference.cyclic=True \
+diffuser.T=50 \
+inference.cyc_chains=&#39;a&#39; \
+ppi.hotspot_res=[\&#39;A51\&#39;,\&#39;A52\&#39;,\&#39;A50\&#39;,\&#39;A48\&#39;,\&#39;A62\&#39;,\&#39;A65\&#39;] \
+</pre></div>
+</div>
+<p>The new flags are <code class="docutils literal notranslate"><span class="pre">inference.cyclic=True</span></code> and <code class="docutils literal notranslate"><span class="pre">inference.cyc_chains</span></code>. Yes, they are somewhat redundant.</p>
+<p><code class="docutils literal notranslate"><span class="pre">inference.cyclic</span></code> simply notifies the program that the user would like to design at least one macrocycle, and <code class="docutils literal notranslate"><span class="pre">inference.cyc_chains</span></code> is just a string containing the letter of every chain you would like to design as a cyclic peptide. In the example above, only chain <code class="docutils literal notranslate"><span class="pre">A</span></code> (<code class="docutils literal notranslate"><span class="pre">inference.cyc_chains='a'</span></code>) is cyclized, but one could do <code class="docutils literal notranslate"><span class="pre">inference.cyc_chains='abcd'</span></code> if they so desired (and the contigs was compatible with this, which the above one is not).</p>
+</section>
+<section id="rfpeptides-monomer-design">
+<h5>RFpeptides monomer design<a class="headerlink" href="#rfpeptides-monomer-design" title="Link to this heading">¶</a></h5>
+<p>For monomer design, you can simply adjust the contigs to only contain a single generated chain e.g., <code class="docutils literal notranslate"><span class="pre">contigmap.contigs=[12-18]</span></code>, keep the <code class="docutils literal notranslate"><span class="pre">inference.cyclic=True</span></code> and <code class="docutils literal notranslate"><span class="pre">inference.cyc_chains='a'</span></code>, and you’re off to the races making monomers.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="a-note-on-model-weights">
+<h4>A Note on Model Weights<a class="headerlink" href="#a-note-on-model-weights" title="Link to this heading">¶</a></h4>
+<p>Because of everything we want diffusion to be able to do, there is not <em>One Model To Rule Them All</em>. E.g., if you want to run with secondary structure conditioning, this requires a different model than if you don’t. Under the hood, we take care of most of this by default - we parse your input and work out the most appropriate checkpoint.
+This is where the config setup is really useful. The exact model checkpoint used at inference contains in it all of the parameters is was trained with, so we can just populate the config file with those values, such that inference runs as designed.
+If you do want to specify a different checkpoint (if, for example, we train a new model and you want to test it), you just have to make sure it’s compatible with what you’re doing. E.g. if you try and give secondary structure features to a model that wasn’t trained with them, it’ll crash.</p>
+</section>
+<section id="things-you-might-want-to-play-with-at-inference-time">
+<h4>Things you might want to play with at inference time<a class="headerlink" href="#things-you-might-want-to-play-with-at-inference-time" title="Link to this heading">¶</a></h4>
+<p>Occasionally, it might good to try an alternative model (for example the active site model, or the beta binder model). These can be specified with <code class="docutils literal notranslate"><span class="pre">inference.ckpt_override_path</span></code>. We do not recommend using these outside of the described use cases, however, as there is not a guarantee they will understand other kinds of inputs.</p>
+<p>For a full list of things that are implemented at inference, see the config file (<code class="docutils literal notranslate"><span class="pre">configs/inference/base.yml</span></code> or <code class="docutils literal notranslate"><span class="pre">configs/inference/symmetry.yml</span></code>). Although you can modify everything, this is not recommended unless you know what you’re doing.
+Generally, don’t change the <code class="docutils literal notranslate"><span class="pre">model</span></code>, <code class="docutils literal notranslate"><span class="pre">preprocess</span></code> or <code class="docutils literal notranslate"><span class="pre">diffuser</span></code> configs. These pertain to how the model was trained, so it’s unwise to change how you use the model at inference time.
+However, the parameters below are definitely worth exploring:
+-inference.final_step: This is when we stop the trajectory. We have seen that you can stop early, and the model is already making a good prediction of the final structure. This speeds up inference.
+-denoiser.noise_scale_ca and denoiser.noise_scale_frame: These can be used to reduce the noise used during sampling (as discussed for PPI above). The default is 1 (the same noise added at training), but this can be reduced to e.g. 0.5, or even 0. This actually improves the quality of models coming out of diffusion, but at the expense of diversity. If you’re not getting any good outputs, or if your problem is very constrained, you could try reducing the noise. While these parameters can be changed independently (for translations and rotations), we recommend keeping them tied.</p>
+</section>
+<section id="understanding-the-output-files">
+<h4>Understanding the output files<a class="headerlink" href="#understanding-the-output-files" title="Link to this heading">¶</a></h4>
+<p>We output several different files.</p>
+<ol class="arabic simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">.pdb</span></code> file. This is the final prediction out of the model. Note that every designed residue is output as a glycine (as we only designed the backbone), and no sidechains are output. This is because, even though RFdiffusion conditions on sidechains in an input motif, there is no loss applied to these predictions, so they can’t strictly be trusted.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">.trb</span></code> file. This contains useful metadata associated with that specific run, including the specific contig used (if length ranges were sampled), as well as the full config used by RFdiffusion. There are also a few other convenient items in this file:</p>
+<ul class="simple">
+<li><p>details about mapping (i.e. how residues in the input map to residues in the output)</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">con_ref_pdb_idx</span></code>/<code class="docutils literal notranslate"><span class="pre">con_hal_pdb_idx</span></code> - These are two arrays including the input pdb indices (in con_ref_pdb_idx), and where they are in the output pdb (in con_hal_pdb_idx). This only contains the chains where inpainting took place (i.e. not any fixed receptor/target chains)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">con_ref_idx0</span></code>/<code class="docutils literal notranslate"><span class="pre">con_hal_idx0</span></code> - These are the same as above, but 0 indexed, and without chain information. This is useful for splicing coordinates out (to assess alignment etc).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">inpaint_seq</span></code> - This details any residues that were masked during inference.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Trajectory files. By default, we output the full trajectories into the <code class="docutils literal notranslate"><span class="pre">/traj/</span></code> folder. These files can be opened in pymol, as multi-step pdbs. Note that these are ordered in reverse, so the first pdb is technically the last (t=1) prediction made by RFdiffusion during inference. We include both the <code class="docutils literal notranslate"><span class="pre">pX0</span></code> predictions (what the model predicted at each timestep) and the <code class="docutils literal notranslate"><span class="pre">Xt-1</span></code> trajectories (what went into the model at each timestep).</p></li>
+</ol>
+</section>
+<section id="docker">
+<h4>Docker<a class="headerlink" href="#docker" title="Link to this heading">¶</a></h4>
+<p>We have provided a Dockerfile at <code class="docutils literal notranslate"><span class="pre">docker/Dockerfile</span></code> to help run RFDiffusion on HPC and other container orchestration systems. Follow these steps to build and run the container on your system:</p>
+<ol class="arabic simple">
+<li><p>Clone this repository with <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.com/RosettaCommons/RFdiffusion.git</span></code> and then <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">RFdiffusion</span></code></p></li>
+<li><p>Verify that the Docker daemon is running on your system with <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">info</span></code>. You can find Docker installation instructions for Mac, WIndows, and Linux in the <a class="reference external" href="https://docs.docker.com/get-docker/">official Docker docs</a>. You may also consider <a class="reference external" href="https://github.com/runfinch/finch">Finch</a>, the open source client for container development.</p></li>
+<li><p>Build the container image on your system with <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">build</span> <span class="pre">-f</span> <span class="pre">docker/Dockerfile</span> <span class="pre">-t</span> <span class="pre">rfdiffusion</span> <span class="pre">.</span></code></p></li>
+<li><p>Create some folders on your file system with <code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">$HOME/inputs</span> <span class="pre">$HOME/outputs</span> <span class="pre">$HOME/models</span></code></p></li>
+<li><p>Download the RFDiffusion models with <code class="docutils literal notranslate"><span class="pre">bash</span> <span class="pre">scripts/download_models.sh</span> <span class="pre">$HOME/models</span></code></p></li>
+<li><p>Download a test file (or another of your choice) with <code class="docutils literal notranslate"><span class="pre">wget</span> <span class="pre">-P</span> <span class="pre">$HOME/inputs</span> <span class="pre">https://files.rcsb.org/view/5TPN.pdb</span></code></p></li>
+<li><p>Run the container with the following command:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--rm<span class="w"> </span>--gpus<span class="w"> </span>all<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-v<span class="w"> </span><span class="nv">$HOME</span>/models:<span class="nv">$HOME</span>/models<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-v<span class="w"> </span><span class="nv">$HOME</span>/inputs:<span class="nv">$HOME</span>/inputs<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-v<span class="w"> </span><span class="nv">$HOME</span>/outputs:<span class="nv">$HOME</span>/outputs<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>rfdiffusion<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>inference.output_prefix<span class="o">=</span><span class="nv">$HOME</span>/outputs/motifscaffolding<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>inference.model_directory_path<span class="o">=</span><span class="nv">$HOME</span>/models<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>inference.input_pdb<span class="o">=</span><span class="nv">$HOME</span>/inputs/5TPN.pdb<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>inference.num_designs<span class="o">=</span><span class="m">3</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="s1">&#39;contigmap.contigs=[10-40/A163-181/10-40]&#39;</span>
+</pre></div>
+</div>
+<p>This starts the <code class="docutils literal notranslate"><span class="pre">rfdiffusion</span></code> container, mounts the models, inputs, and outputs folders, passes all available GPUs, and then calls the <code class="docutils literal notranslate"><span class="pre">run_inference.py</span></code> script with the parameters specified.</p>
+</section>
+<section id="conclusion">
+<h4>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">¶</a></h4>
+<p>We are extremely excited to share RFdiffusion with the wider scientific community. We expect to push some updates as and when we make sizeable improvements in the coming months, so do stay tuned. We realize it may take some time to get used to executing RFdiffusion with perfect syntax (sometimes Hydra is hard), so please don’t hesitate to create GitHub issues if you need help, we will respond as often as we can.</p>
+<p>Now, let’s go make some proteins. Have fun!</p>
+<p>- Joe, David, Nate, Brian, Jason, and the RFdiffusion team.</p>
+<hr class="docutils" />
+<p>RFdiffusion builds directly on the architecture and trained parameters of RoseTTAFold. We therefore thank Frank DiMaio and Minkyung Baek, who developed RoseTTAFold.
+RFdiffusion is released under an open source BSD License (see LICENSE file). It is free for both non-profit and for-profit use.</p>
+</section>
+</section>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          
+          <a class="prev-page" href="index.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Home</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2025, Joseph Watson, David Juergens, Nathaniel Bennett, Brian Trippe, Jason Yim
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">README file</a><ul>
+<li><a class="reference internal" href="#rfdiffusion">RF<em>diffusion</em></a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#table-of-contents">Table of contents</a></li>
+<li><a class="reference internal" href="#getting-started-installation">Getting started / installation</a><ul>
+<li><a class="reference internal" href="#conda-install-se3-transformer">Conda Install SE3-Transformer</a></li>
+<li><a class="reference internal" href="#get-ppi-scaffold-examples">Get PPI Scaffold Examples</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#usage">Usage</a><ul>
+<li><a class="reference internal" href="#running-the-diffusion-script">Running the diffusion script</a></li>
+<li><a class="reference internal" href="#basic-execution-an-unconditional-monomer">Basic execution - an unconditional monomer</a></li>
+<li><a class="reference internal" href="#motif-scaffolding">Motif Scaffolding</a></li>
+<li><a class="reference internal" href="#the-active-site-model-holds-very-small-motifs-in-place">The “active site” model holds very small motifs in place</a></li>
+<li><a class="reference internal" href="#the-inpaint-seq-flag">The <code class="docutils literal notranslate"><span class="pre">inpaint_seq</span></code> flag</a></li>
+<li><a class="reference internal" href="#a-note-on-diffuser-t">A note on <code class="docutils literal notranslate"><span class="pre">diffuser.T</span></code></a></li>
+<li><a class="reference internal" href="#partial-diffusion">Partial diffusion</a></li>
+<li><a class="reference internal" href="#binder-design">Binder Design</a></li>
+<li><a class="reference internal" href="#practical-considerations-for-binder-design">Practical Considerations for Binder Design</a><ul>
+<li><a class="reference internal" href="#selecting-a-target-site">Selecting a Target Site</a></li>
+<li><a class="reference internal" href="#truncating-your-target-protein">Truncating your Target Protein</a></li>
+<li><a class="reference internal" href="#picking-hotspots">Picking Hotspots</a></li>
+<li><a class="reference internal" href="#binder-design-scale">Binder Design Scale</a></li>
+<li><a class="reference internal" href="#sequence-design-for-binders">Sequence Design for Binders</a></li>
+<li><a class="reference internal" href="#binder-design-filtering">Binder Design Filtering</a></li>
+<li><a class="reference internal" href="#fold-conditioning">Fold Conditioning</a></li>
+<li><a class="reference internal" href="#generation-of-symmetric-oligomers">Generation of Symmetric Oligomers</a></li>
+<li><a class="reference internal" href="#using-auxiliary-potentials">Using Auxiliary Potentials</a></li>
+<li><a class="reference internal" href="#symmetric-motif-scaffolding">Symmetric Motif Scaffolding.</a></li>
+<li><a class="reference internal" href="#macrocyclic-peptide-design-with-rfpeptides">Macrocyclic peptide design with RFpeptides</a><ul>
+<li><a class="reference internal" href="#rfpeptides-binder-design">RFpeptides binder design</a></li>
+<li><a class="reference internal" href="#rfpeptides-monomer-design">RFpeptides monomer design</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#a-note-on-model-weights">A Note on Model Weights</a></li>
+<li><a class="reference internal" href="#things-you-might-want-to-play-with-at-inference-time">Things you might want to play with at inference time</a></li>
+<li><a class="reference internal" href="#understanding-the-output-files">Understanding the output files</a></li>
+<li><a class="reference internal" href="#docker">Docker</a></li>
+<li><a class="reference internal" href="#conclusion">Conclusion</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="_static/documentation_options.js?v=0737924e"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/scripts/furo.js?v=46bd48cc"></script>
+    </body>
+</html>
