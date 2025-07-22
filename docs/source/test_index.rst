@@ -13,4 +13,10 @@ RF\ *diffusion*\
    :maxdepth: 2
    :caption: Contents:
 
-   readme_link
+      
+Contents
+________
+
+.. toctree::
+
+   README
